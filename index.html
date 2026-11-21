@@ -10,22 +10,14 @@
 <style>
 *{box-sizing:border-box}
 body{
- margin:0;
- background:#fff2b5;
- color:#51412f;
+ margin:0;background:#fff2b5;color:#51412f;
  font-family:"Trebuchet MS",sans-serif;
- text-align:center;
- overflow-x:hidden;
+ text-align:center;overflow-x:hidden;
 }
 button{
- border:0;
- border-radius:25px;
- padding:14px 22px;
- background:#f4b94d;
- color:#49351d;
- font-weight:bold;
- font-size:15px;
- cursor:pointer;
+ border:0;border-radius:25px;padding:14px 22px;
+ background:#f4b94d;color:#49351d;
+ font-weight:bold;font-size:15px;cursor:pointer;
  box-shadow:0 4px 0 #d99b38;
 }
 button:active{transform:translateY(3px);box-shadow:none}
@@ -35,42 +27,27 @@ p{line-height:1.6}
 .hidden{display:none!important}
 section{padding:55px 18px}
 .card{
- background:#fffbea;
- padding:22px;
- border-radius:25px;
- margin:18px auto;
- max-width:520px;
+ background:#fffbea;padding:22px;border-radius:25px;
+ margin:18px auto;max-width:520px;
  box-shadow:0 8px 25px #a77d3820;
 }
 .sticker{font-size:30px}
 .cat{
- width:170px;height:170px;
- object-fit:cover;border-radius:25px;
- border:7px solid white;
+ width:170px;height:170px;object-fit:cover;
+ border-radius:25px;border:7px solid white;
  transform:rotate(-4deg);
 }
 #gate{
- min-height:100vh;
- display:flex;
- flex-direction:column;
- justify-content:center;
- align-items:center;
- padding:25px 16px;
+ min-height:100vh;display:flex;flex-direction:column;
+ justify-content:center;align-items:center;padding:25px 16px;
 }
 #cameraBox{
- width:min(330px,90vw);
- height:350px;
- border:8px solid white;
- border-radius:35px;
- overflow:hidden;
- background:#f7d986;
- position:relative;
- box-shadow:0 8px 25px #9e792e30;
- margin:20px auto;
+ width:min(330px,90vw);height:350px;
+ border:8px solid white;border-radius:35px;
+ overflow:hidden;background:#f7d986;position:relative;
+ box-shadow:0 8px 25px #9e792e30;margin:20px auto;
 }
-#video,#selfie{
- width:100%;height:100%;object-fit:cover;
-}
+#video,#selfie{width:100%;height:100%;object-fit:cover}
 #selfie{display:none}
 #cameraHint{
  position:absolute;bottom:12px;left:0;right:0;
@@ -83,30 +60,26 @@ header{padding:45px 15px 20px}
 header h1{margin-bottom:5px}
 .tagline{color:#a77a35}
 .music{
- background:#fffbea;padding:18px;
- border-radius:25px;margin:20px auto;
- max-width:450px;
+ background:#fffbea;padding:20px;border-radius:25px;
+ margin:20px auto;max-width:500px;
+ box-shadow:0 8px 25px #a77d3820;
+}
+.music iframe{
+ display:block;width:100%;border:0;
+ border-radius:12px;margin-top:18px;
 }
 input,textarea{
- width:100%;padding:14px;
- border:2px solid #f2d78d;
- border-radius:15px;
- font:inherit;background:white;
- margin:8px 0;
+ width:100%;padding:14px;border:2px solid #f2d78d;
+ border-radius:15px;font:inherit;background:white;margin:8px 0;
 }
 .envelope{
- background:#ffe0a1;
- padding:25px;
- border-radius:20px;
- cursor:pointer;
- margin:12px 0;
+ background:#ffe0a1;padding:25px;border-radius:20px;
+ cursor:pointer;margin:12px 0;
 }
 .message{display:none;background:white;padding:15px;border-radius:15px}
 .polaroid{
- display:inline-block;background:white;
- padding:12px 12px 25px;
- margin:10px;transform:rotate(2deg);
- box-shadow:0 5px 15px #0002;
+ display:inline-block;background:white;padding:12px 12px 25px;
+ margin:10px;transform:rotate(2deg);box-shadow:0 5px 15px #0002;
 }
 .polaroid img{width:130px;height:140px;object-fit:cover}
 #stars{font-size:26px;min-height:50px}
@@ -120,8 +93,7 @@ footer{padding:35px;color:#997b4d}
 }
 .float{
  position:fixed;pointer-events:none;
- animation:float 5s infinite ease-in-out;
- opacity:.6;z-index:0;
+ animation:float 5s infinite ease-in-out;opacity:.6;z-index:0;
 }
 @keyframes float{50%{transform:translateY(-25px) rotate(20deg)}}
 </style>
@@ -178,18 +150,27 @@ footer{padding:35px;color:#997b4d}
  <p>Hope this little corner makes you smile. 💛</p>
 </header>
 
-<!-- MUSIC -->
+<!-- SPOTIFY MUSIC PLAYER -->
 <section>
  <div class="music">
   <div class="sticker">🎵 🎧 🎵</div>
   <h2>A little melody</h2>
-  <p>Xadhu Kotha · Tanmoy Saikia</p>
-  <audio id="music" controls loop preload="none">
-   <source src="xadhu-kotha.mp3" type="audio/mpeg">
-  </audio>
+  <p>Xadhu Kotha · Tanmoy saikia </p>
+  </section>
+ 
+<iframe
+  style="border-radius:12px"
+  src="https://open.spotify.com/embed/track/7JhRFrVLTqZ29YVwjiszL4?utm_source=generator"
+  width="100%"
+  height="152"
+  frameBorder="0"
+  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+  loading="lazy">
+</iframe>
+
+
   <p style="font-size:12px">
-   Add a legally obtained audio file named xadhu-kotha.mp3
-   to your repository, or use an official music embed.
+   A little song to make your day sunnier. 💛
   </p>
  </div>
 </section>
@@ -301,8 +282,7 @@ let timer=null;
 async function startCamera(){
  try{
   stream=await navigator.mediaDevices.getUserMedia({
-   video:{facingMode:"user"},
-   audio:false
+   video:{facingMode:"user"},audio:false
   });
   video.srcObject=stream;
   await video.play();
@@ -441,3 +421,4 @@ window.addEventListener("pagehide",stopCamera);
 </script>
 </body>
 </html>
+
