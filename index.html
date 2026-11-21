@@ -1,0 +1,443 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fff0a8">
+<title>A Little Sunshine 🌼</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ background:#fff2b5;
+ color:#51412f;
+ font-family:"Trebuchet MS",sans-serif;
+ text-align:center;
+ overflow-x:hidden;
+}
+button{
+ border:0;
+ border-radius:25px;
+ padding:14px 22px;
+ background:#f4b94d;
+ color:#49351d;
+ font-weight:bold;
+ font-size:15px;
+ cursor:pointer;
+ box-shadow:0 4px 0 #d99b38;
+}
+button:active{transform:translateY(3px);box-shadow:none}
+h1{font-size:clamp(30px,8vw,48px)}
+h2{color:#9c7134}
+p{line-height:1.6}
+.hidden{display:none!important}
+section{padding:55px 18px}
+.card{
+ background:#fffbea;
+ padding:22px;
+ border-radius:25px;
+ margin:18px auto;
+ max-width:520px;
+ box-shadow:0 8px 25px #a77d3820;
+}
+.sticker{font-size:30px}
+.cat{
+ width:170px;height:170px;
+ object-fit:cover;border-radius:25px;
+ border:7px solid white;
+ transform:rotate(-4deg);
+}
+#gate{
+ min-height:100vh;
+ display:flex;
+ flex-direction:column;
+ justify-content:center;
+ align-items:center;
+ padding:25px 16px;
+}
+#cameraBox{
+ width:min(330px,90vw);
+ height:350px;
+ border:8px solid white;
+ border-radius:35px;
+ overflow:hidden;
+ background:#f7d986;
+ position:relative;
+ box-shadow:0 8px 25px #9e792e30;
+ margin:20px auto;
+}
+#video,#selfie{
+ width:100%;height:100%;object-fit:cover;
+}
+#selfie{display:none}
+#cameraHint{
+ position:absolute;bottom:12px;left:0;right:0;
+ color:white;text-shadow:0 2px 5px black;
+}
+.actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+#countdown{font-size:55px;font-weight:bold;color:#fff}
+#main{display:none}
+header{padding:45px 15px 20px}
+header h1{margin-bottom:5px}
+.tagline{color:#a77a35}
+.music{
+ background:#fffbea;padding:18px;
+ border-radius:25px;margin:20px auto;
+ max-width:450px;
+}
+input,textarea{
+ width:100%;padding:14px;
+ border:2px solid #f2d78d;
+ border-radius:15px;
+ font:inherit;background:white;
+ margin:8px 0;
+}
+.envelope{
+ background:#ffe0a1;
+ padding:25px;
+ border-radius:20px;
+ cursor:pointer;
+ margin:12px 0;
+}
+.message{display:none;background:white;padding:15px;border-radius:15px}
+.polaroid{
+ display:inline-block;background:white;
+ padding:12px 12px 25px;
+ margin:10px;transform:rotate(2deg);
+ box-shadow:0 5px 15px #0002;
+}
+.polaroid img{width:130px;height:140px;object-fit:cover}
+#stars{font-size:26px;min-height:50px}
+footer{padding:35px;color:#997b4d}
+.confetti{
+ position:fixed;top:-20px;z-index:20;
+ pointer-events:none;animation:fall 3s linear forwards;
+}
+@keyframes fall{
+ to{transform:translateY(110vh) rotate(700deg);opacity:0}
+}
+.float{
+ position:fixed;pointer-events:none;
+ animation:float 5s infinite ease-in-out;
+ opacity:.6;z-index:0;
+}
+@keyframes float{50%{transform:translateY(-25px) rotate(20deg)}}
+</style>
+</head>
+
+<body>
+
+<div class="float" style="top:10%;left:5%">🌼</div>
+<div class="float" style="top:30%;right:5%">⭐</div>
+<div class="float" style="top:70%;left:7%">🐾</div>
+
+<!-- SELFIE UNLOCK SCREEN -->
+<div id="gate">
+ <div style="font-size:45px">🌼 📸 🌼</div>
+ <h1>Hieeeee!</h1>
+ <p>Welcome to this little sunshine corner.</p>
+ <div class="card">
+  <h2>But waittt! 🐱</h2>
+  <p>One tiny challenge before you enter...</p>
+  <p><b>Take a cute selfie to unlock your surprise!</b></p>
+ </div>
+
+ <div id="cameraBox">
+  <video id="video" autoplay playsinline muted></video>
+  <img id="selfie" alt="Your selfie">
+  <div id="cameraHint">Your photo booth awaits ✨</div>
+  <div id="countdown" class="hidden"></div>
+ </div>
+
+ <p id="cameraStatus">Tap below to activate your camera.</p>
+ <div class="actions">
+  <button id="startCamera">📷 Open Camera</button>
+  <button id="takePhoto" class="hidden">Take Selfie ✨</button>
+  <button id="retake" class="hidden">Retake 🔄</button>
+ </div>
+ <br>
+ <button id="unlock" class="hidden">Unlock My Surprise 💛</button>
+ <p style="font-size:12px">Your selfie stays on this page. It is not uploaded.</p>
+ <button id="skip" style="background:#fff5d5;box-shadow:none;font-size:12px">
+  Continue without selfie
+ </button>
+</div>
+
+<!-- MAIN WEBSITE -->
+<div id="main">
+
+<header>
+ <div style="font-size:48px">🌻 🐈 🌻</div>
+ <h1>Hieee, Sunshine!</h1>
+ <p class="tagline">A little happiness, made just for you.</p>
+ <img class="cat"
+ src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=500"
+ alt="Cute real cat">
+ <p>Hope this little corner makes you smile. 💛</p>
+</header>
+
+<!-- MUSIC -->
+<section>
+ <div class="music">
+  <div class="sticker">🎵 🎧 🎵</div>
+  <h2>A little melody</h2>
+  <p>Xadhu Kotha · Tanmoy Saikia</p>
+  <audio id="music" controls loop preload="none">
+   <source src="xadhu-kotha.mp3" type="audio/mpeg">
+  </audio>
+  <p style="font-size:12px">
+   Add a legally obtained audio file named xadhu-kotha.mp3
+   to your repository, or use an official music embed.
+  </p>
+ </div>
+</section>
+
+<!-- CAT SURPRISE -->
+<section>
+ <h2>Meet your happiness assistant 🐾</h2>
+ <div class="card">
+  <img class="cat"
+   src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=500"
+   alt="Real kitten">
+  <h2>Today's dose of cuteness</h2>
+  <p id="catMessage">You deserve a little happiness today!</p>
+  <button onclick="catSurprise()">More cuteness 🐱</button>
+ </div>
+</section>
+
+<!-- ENVELOPES -->
+<section>
+ <h2>Little letters for you 💌</h2>
+ <p>Choose an envelope to open.</p>
+ <div class="card">
+  <div class="envelope" onclick="openLetter(0)">
+   💌 Open when you need a smile
+   <div class="message" id="letter0">
+    Hey! Just a reminder that your presence makes the world a little brighter. 🌷
+   </div>
+  </div>
+  <div class="envelope" onclick="openLetter(1)">
+   💌 Open when you feel tired
+   <div class="message" id="letter1">
+    Take a little break. You don't have to figure everything out today. 🌼
+   </div>
+  </div>
+  <div class="envelope" onclick="openLetter(2)">
+   💌 Open for a random surprise
+   <div class="message" id="letter2">
+    Congratulations! You've officially been adopted by the happiness cat club. 🐈
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- SCRAPBOOK -->
+<section>
+ <h2>Our little scrapbook 📸</h2>
+ <div class="card">
+  <div class="polaroid">
+   <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=400" alt="Flowers">
+   <p>Little joys 🌷</p>
+  </div>
+  <div class="polaroid">
+   <img src="https://images.unsplash.com/photo-1490730141103-6cac27aaab94?w=400" alt="Sunshine">
+   <p>Sunny days ☀️</p>
+  </div>
+  <div class="polaroid">
+   <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400" alt="Cat">
+   <p>Cat energy 🐱</p>
+  </div>
+ </div>
+</section>
+
+<!-- WISH JAR -->
+<section>
+ <h2>Make a little wish ⭐</h2>
+ <div class="card">
+  <p>Write a wish and put it into the magic jar!</p>
+  <textarea id="wish" rows="3" placeholder="My little wish is..."></textarea>
+  <button onclick="makeWish()">Put in the jar ✨</button>
+  <div id="stars"></div>
+  <p id="wishMessage"></p>
+ </div>
+</section>
+
+<!-- SECRET -->
+<section>
+ <h2>A secret button 👀</h2>
+ <div class="card">
+  <p>There's something hidden here...</p>
+  <button onclick="secret()">Don't click me 🤫</button>
+  <p id="secretMessage"></p>
+ </div>
+</section>
+
+<footer>
+ <div style="font-size:30px">🌼 🐾 💛</div>
+ Made with a little sunshine.
+ <p>End of this tiny happy place.</p>
+</footer>
+
+</div>
+
+<script>
+const video=document.getElementById("video");
+const selfie=document.getElementById("selfie");
+const statusText=document.getElementById("cameraStatus");
+const startBtn=document.getElementById("startCamera");
+const takeBtn=document.getElementById("takePhoto");
+const retakeBtn=document.getElementById("retake");
+const unlockBtn=document.getElementById("unlock");
+const countdown=document.getElementById("countdown");
+const gate=document.getElementById("gate");
+const main=document.getElementById("main");
+
+let stream=null;
+let captured=false;
+let timer=null;
+
+async function startCamera(){
+ try{
+  stream=await navigator.mediaDevices.getUserMedia({
+   video:{facingMode:"user"},
+   audio:false
+  });
+  video.srcObject=stream;
+  await video.play();
+  video.style.display="block";
+  selfie.style.display="none";
+  startBtn.classList.add("hidden");
+  takeBtn.classList.remove("hidden");
+  statusText.textContent="Camera ready! Get your best smile! 📸";
+ }catch(error){
+  statusText.textContent=
+   "Camera unavailable. Allow camera permission or continue without a selfie.";
+ }
+}
+startBtn.addEventListener("click",startCamera);
+
+function stopCamera(){
+ if(stream){
+  stream.getTracks().forEach(track=>track.stop());
+  stream=null;
+ }
+}
+
+takeBtn.addEventListener("click",()=>{
+ let n=3;
+ countdown.classList.remove("hidden");
+ countdown.textContent=n;
+ takeBtn.disabled=true;
+ timer=setInterval(()=>{
+  n--;
+  if(n>0){
+   countdown.textContent=n;
+  }else{
+   clearInterval(timer);
+   countdown.classList.add("hidden");
+   capture();
+  }
+ },1000);
+});
+
+function capture(){
+ if(!video.videoWidth){
+  statusText.textContent="Camera is not ready. Please try again.";
+  takeBtn.disabled=false;
+  return;
+ }
+ const canvas=document.createElement("canvas");
+ canvas.width=video.videoWidth;
+ canvas.height=video.videoHeight;
+ const ctx=canvas.getContext("2d");
+ ctx.translate(canvas.width,0);
+ ctx.scale(-1,1);
+ ctx.drawImage(video,0,0);
+ selfie.src=canvas.toDataURL("image/jpeg",0.85);
+ selfie.style.display="block";
+ video.style.display="none";
+ stopCamera();
+ captured=true;
+ takeBtn.classList.add("hidden");
+ retakeBtn.classList.remove("hidden");
+ unlockBtn.classList.remove("hidden");
+ statusText.textContent="Awww! Your selfie is ready! 💛";
+}
+
+retakeBtn.addEventListener("click",async()=>{
+ selfie.style.display="none";
+ retakeBtn.classList.add("hidden");
+ unlockBtn.classList.add("hidden");
+ takeBtn.disabled=false;
+ captured=false;
+ await startCamera();
+});
+
+function unlock(){
+ clearInterval(timer);
+ stopCamera();
+ gate.style.display="none";
+ main.style.display="block";
+ confetti();
+ window.scrollTo(0,0);
+}
+unlockBtn.addEventListener("click",unlock);
+document.getElementById("skip").addEventListener("click",unlock);
+
+function confetti(){
+ const pieces=["🌼","⭐","💛","🐾","✨","🌷"];
+ for(let i=0;i<45;i++){
+  const el=document.createElement("div");
+  el.className="confetti";
+  el.textContent=pieces[Math.floor(Math.random()*pieces.length)];
+  el.style.left=Math.random()*100+"vw";
+  el.style.animationDelay=Math.random()*1.5+"s";
+  el.style.fontSize=(16+Math.random()*18)+"px";
+  document.body.appendChild(el);
+  setTimeout(()=>el.remove(),4500);
+ }
+}
+
+function openLetter(i){
+ const m=document.getElementById("letter"+i);
+ m.style.display=m.style.display==="block"?"none":"block";
+}
+
+const catMessages=[
+ "You're paws-itively wonderful! 🐾",
+ "Sending you a thousand virtual purrs!",
+ "Remember to smile today! 🌻",
+ "You are someone's favourite notification. 💛",
+ "Today's forecast: 100% chance of cuteness!"
+];
+function catSurprise(){
+ document.getElementById("catMessage").textContent=
+ catMessages[Math.floor(Math.random()*catMessages.length)];
+}
+
+function makeWish(){
+ const wish=document.getElementById("wish").value.trim();
+ if(!wish){
+  document.getElementById("wishMessage").textContent=
+  "Write a little wish first! 🌼";
+  return;
+ }
+ document.getElementById("stars").textContent+=" ⭐ ✨";
+ document.getElementById("wishMessage").textContent=
+ "Your wish has been sent into the universe! 💛";
+ document.getElementById("wish").value="";
+ confetti();
+}
+
+function secret(){
+ document.getElementById("secretMessage").textContent=
+ "Surprise! You are officially today's sunshine. Never forget to smile! 🌻💛🐱";
+ confetti();
+}
+
+window.addEventListener("pagehide",stopCamera);
+</script>
+</body>
+</html>
